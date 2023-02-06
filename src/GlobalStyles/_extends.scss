@@ -1,0 +1,9 @@
+@import "./variables";
+
+%box__with__shadow {
+
+    width: 100%;
+    padding: 20px;
+    border-radius: $border-radius-20;
+    box-shadow: 3px 3px 10px rgb(224, 224, 224), -3px -3px 10px rgb(224, 224, 224);
+}

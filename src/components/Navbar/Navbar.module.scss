@@ -1,0 +1,28 @@
+
+
+.navbar {
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        list-style-type: none;
+        &__item {
+            width: fit-content;
+            padding-right: 50px;
+            a {
+                display: flex;
+                align-items: center;
+                font-size: 21px;
+                color: rgba(12, 33, 193, 1);
+                text-decoration: none;
+                width: max-content;
+                .navbar__list__item__icon {
+                    margin-right: 10px;
+                }
+            }
+            
+        }
+    }
+}
