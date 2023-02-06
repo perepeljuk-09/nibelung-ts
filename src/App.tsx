@@ -1,6 +1,6 @@
-import React, {lazy, Suspense} from 'react';
+import {lazy, Suspense} from 'react';
 import { LoginPage } from './pages/LoginPage/LoginPage';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 import { RegistrationPage } from './pages/RegistrationPage/RegistrationPage';
 import './GlobalStyles/App.scss';
 

@@ -12,12 +12,12 @@ export const PostCard: React.FC<IPostCard> = ({title, description, imageSrc, com
     return (
         <div className={s.post__card}>
             <p className={s.post__card__title}>
-            
+                post car Title
             </p>
             <p className={s.post__card__description}>
-            
+                description
             </p>
-            {imageSrc && <img src={imageSrc} alt="post image"/>}
+            {imageSrc && <img src={imageSrc} alt="post imag"/>}
 
             <span>Likes count</span>
             <span>Subscribe</span>

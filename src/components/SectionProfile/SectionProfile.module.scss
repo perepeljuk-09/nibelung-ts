@@ -33,6 +33,9 @@
                 height: 100%;
                 border-radius: 50%;
             }
+            p {
+                font-size: 60px;
+            }
         &::before {
             @include gradient-before($color-gradient-main)
         }

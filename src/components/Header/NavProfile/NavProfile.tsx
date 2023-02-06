@@ -1,8 +1,9 @@
-import {useNavigate} from "react-router-dom";
-import { setAuth } from "../../../redux/AuthReducer";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
+import { UserPhoto } from "../../../utils/UserPhoto/UserPhoto";
+import { Button } from "../../../utils/Button/Button";
+import { logOutAsync } from "../../../redux/AuthReducer";
 import s from "../Header.module.scss";
-import axios from "axios";
+// import ava from "../../SectionProfile/photo.jpg";
 
 
 
@@ -10,23 +11,33 @@ import axios from "axios";
 
 export const NavProfile = () => {
     
-    const navigate = useNavigate();
-
-    const token = useAppSelector(state => state.auth.token);
+    // const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
-    console.log(token, '- token')
+    // const accessToken = useAppSelector(state => state.auth.accessToken);
+    const refreshToken = useAppSelector(state => state.auth.refreshToken);
+
+    
+    const imageSrc = useAppSelector(state => state.user.imageSrc)
+    const genderId = useAppSelector(state => state.user.genderId)
+
+    // console.log(accessToken, '- accessToken')
+    // console.log(refreshToken, '- refreshToken')
     const logOut = () => {
-        dispatch(setAuth(''))
+        // dispatch(setTokens({accessToken: '', refreshToken: ''}))
+        dispatch(logOutAsync(refreshToken))
         
-        // axios.post()   
+        localStorage.removeItem('access-token')
+        localStorage.removeItem('refresh-token')
+        
     }
 return (
     <div className={s.nav__profile}>
         <div className={s.nav__profile__photo}>
             {/* Profile photo */}
+            <UserPhoto imageSrc={imageSrc} genderId={genderId}/>
         </div>
-        <button onClick={logOut}>Выйти</button>
+        <Button onClick={logOut}>Выйти</Button>
     </div>
     )
 }

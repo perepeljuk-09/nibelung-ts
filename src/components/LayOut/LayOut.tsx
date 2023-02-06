@@ -9,13 +9,13 @@ const LayOut = () => {
 
     const navigate = useNavigate();
 
-    const token = useAppSelector(state => state.auth.token)
+    const accessToken = useAppSelector(state => state.auth.accessToken)
 
     useEffect(() => {
-        if(!token) {
+        if(!accessToken) {
             navigate("/login")
         } 
-    }, [token])
+    }, [accessToken, navigate])
 
     return (
         <div className={s.layout}>

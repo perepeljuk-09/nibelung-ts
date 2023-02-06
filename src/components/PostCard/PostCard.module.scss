@@ -1,0 +1,5 @@
+@import "../../GlobalStyles/extends";
+
+.post__card {
+    @extend %box__with__shadow; 
+}

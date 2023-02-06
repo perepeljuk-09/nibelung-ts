@@ -32,13 +32,21 @@ const RegistrationPage: React.FC = () => {
             setIsPasswordMatch(true)
             console.log(data)
             dispatch(setLoadingOn())
-            setTimeout(() => {
+            // setTimeout(() => {
 
-                dispatch(setLoadingOff())
-                reset()
-                navigate('/login')
-            }, 1000)
-            // registrationApi.registration(data)
+            //     dispatch(setLoadingOff())
+            //     reset()
+            //     navigate('/login')
+            // }, 1000)
+            registrationApi.registration(data).then(res => {
+                if(res.status === 200) {
+                    reset()
+                    navigate('/login')
+                }
+            }).catch(e => {
+                console.log(e)
+            })
+            dispatch(setLoadingOff())
 
         } else {
             setIsPasswordMatch(false)
@@ -106,7 +114,7 @@ const RegistrationPage: React.FC = () => {
                     </label>
                 </div>
                 <div className="block__input">
-                    <label htmlFor={"lastName"} className={"input__title"}>
+                    <label htmlFor={"patronymic"} className={"input__title"}>
                         Отчество
                         <input {...register("patronymic")}
                                id={"patronymic"}
@@ -116,16 +124,26 @@ const RegistrationPage: React.FC = () => {
                     </label>
                 </div>
                 <div className="block__input">
-                    <label htmlFor={"date"} className={"input__title"}>
+                    <label htmlFor={"phoneNumber"} className={"input__title"}>
+                        Номер телефона
+                        <input {...register("phoneNumber")}
+                               id={"phoneNumber"}
+                               placeholder={'Введите ваш номер телефона'}
+                               className="custom__input"/>
+                        {errors?.phoneNumber && <Error>{errors.phoneNumber.message}</Error>}
+                    </label>
+                </div>
+                <div className="block__input">
+                    <label htmlFor={"birthday"} className={"input__title"}>
                         Дата рождения
-                        <input {...register("date", {
+                        <input {...register("birthday", {
                             valueAsDate: true,
                             required: "Обязательное поле"
                         })}
-                               id={"date"}
+                               id={"birthday"}
                                className="custom__input"
                                type="date"/>
-                        {errors?.date && <Error>{errors.date.message}</Error>}
+                        {errors?.birthday && <Error>{errors.birthday.message}</Error>}
                     </label>
                 </div>
                 <div className="block__input">
@@ -149,19 +167,19 @@ const RegistrationPage: React.FC = () => {
                     </label>
                 </div>
                 <div className="block__input">
-                    <label htmlFor={"loginReg"} className={"input__title"}>
+                    <label htmlFor={"login"} className={"input__title"}>
                         Логин
-                        <input {...register("loginReg", {
+                        <input {...register("login", {
                             required: "Поле обязательно",
                             maxLength: {
                                 value: 30,
                                 message: "Максимальная длина 30 символов"
                             }
                         })}
-                               id={"loginReg"}
+                               id={"login"}
                                placeholder={'Введите ваш логин'}
                                className="custom__input"/>
-                        {errors?.loginReg && <Error>{errors.loginReg.message}</Error>}
+                        {errors?.login && <Error>{errors.login.message}</Error>}
                     </label>
                 </div>
                 <div className="block__input">

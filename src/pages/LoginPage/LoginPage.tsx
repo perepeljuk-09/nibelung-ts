@@ -4,14 +4,19 @@ import {Button} from "../../utils/Button/Button";
 import {Link} from "react-router-dom"
 import {Error} from "../../utils/Error/Error";
 import {useForm, SubmitHandler} from "react-hook-form";
-import axios, {AxiosResponse} from "axios";
 import {useNavigate} from "react-router-dom";
-import { setAuth, setLoadingOn, setLoadingOff } from '../../redux/AuthReducer';
+import { setTokens, setLoadingOn, setLoadingOff } from '../../redux/AuthReducer';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import {IFormLogin} from "../../types/types";
-import {authApi} from "../../api/axiosApi";
+import {authApi, instanceAxios} from "../../api/axiosApi";
+import {getUserData} from "../../redux/UserReducer";
+import jwt_decode from "jwt-decode";
 import "./LoginPage.module.scss"
 
+type JWTTOKEN = {
+    sub: string;
+    exp: number;
+}
 
 const LoginPage = () => {
     const {
@@ -23,46 +28,43 @@ const LoginPage = () => {
         }
     } = useForm<IFormLogin>({mode: "onChange"});
 
-    const token = useAppSelector(state => state.auth.token);
+    const accessToken = useAppSelector(state => state.auth.accessToken);
     const isLoading = useAppSelector(state => state.auth.isLoading)
+    const id = useAppSelector(state => state.user.id)
+
     const navigate = useNavigate();
     const dispatch = useAppDispatch()
 
-    const getToken = Promise.resolve()
 
    
 
     const onSubmit: SubmitHandler<IFormLogin> = (data) => {
-        console.log(data)
-        // axios.post("http://192.168.1.4:1111/api/auth/authorize", data).then( res => {
         dispatch(setLoadingOn())
-        //authApi.login(data)
-        // .then(res => {
-            let res = {
-                status: 200,
-                data: {
-                    token: 's'
-                }
-            }
-            console.log(res)
+        authApi.login(data)
+            .then(res => {
             if(res.status === 200) {
-                setTimeout(() => {
-
-                    dispatch(setAuth(res.data.token))
+                    let decode = jwt_decode(res.data.data.accessToken) as JWTTOKEN
+                    let objDecode = JSON.parse(decode.sub) 
+                    
+                    dispatch(setTokens(res.data.data))
+                    localStorage.setItem('access-token', res.data.data.accessToken)
+                    localStorage.setItem('refresh-token', res.data.data.refreshToken)
+                    instanceAxios.defaults.headers['Authorization'] = `Bearer ${res.data.data.accessToken}`
+                    dispatch(getUserData(objDecode.UserId))
                     reset()
                     dispatch(setLoadingOff())
-                }, 2000)
+
             }
-        // }).catch(er => {
-        //     console.error(er)
-        // })
+        }).catch(er => {
+            console.error(er)
+        })
     }
 
     useEffect(() => {
-        if(token) {
-            navigate('/1')
+        if(accessToken && id) {
+            navigate(`/${id}`)
         }
-    }, [token, navigate])
+    }, [accessToken, id, navigate])
 
 return (
     <>
