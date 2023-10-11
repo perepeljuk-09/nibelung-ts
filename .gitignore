@@ -6,7 +6,7 @@
 .pnp.js
 /dist
 /webpack.config.js
-/eslintrc
+/.eslintrc
 
 # testing
 /coverage
