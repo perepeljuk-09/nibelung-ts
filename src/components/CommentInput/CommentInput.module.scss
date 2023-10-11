@@ -1,0 +1,37 @@
+@import '../../GlobalStyles/variables';
+
+.comment {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &__input {
+        width: 100%;
+        border-radius: 12px;
+        padding: 6px 12px;
+        &:focus {
+            border-color: transparent;
+            outline: orangered 1px solid;
+        }
+    }
+
+    &__btn {
+        background-color: transparent;
+        border: none;
+        &:disabled {
+            cursor: no-drop;
+        }
+    }
+
+    &__send {
+        color: $color-primary;
+        cursor: pointer;
+        &:hover {
+            color: orangered;
+        }
+        &_disable {
+            color: gray;
+        }
+    }
+}

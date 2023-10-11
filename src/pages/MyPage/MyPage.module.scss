@@ -1,5 +1,47 @@
 @import "../../GlobalStyles/extends";
 
-.post__input {
+.post {
     @extend %box__with__shadow;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    &__input {
+        border-radius: 8px;
+        padding: 8px 12px;
+        border-color: gray;
+        &:focus {
+            border-color: transparent;
+            outline: orangered 1px solid;
+        }
+    }
+    &__textarea {
+        border-radius: 8px;
+        padding: 12px 16px;
+        resize: vertical;
+        min-height: 50px;
+        max-height: 250px;
+        border-color: gray;
+
+        &:focus {
+            border-color: transparent;
+            outline: orangered 1px solid;
+        }
+    }
+    &__footer {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    &__file {
+        cursor: pointer;
+        &:hover {
+            color: orangered;
+        }
+    }
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }

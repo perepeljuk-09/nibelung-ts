@@ -10,7 +10,9 @@
     @extend %box__with__shadow;
 
     &__info {
-
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
         &__name {
 
             font-size: 45px;
@@ -38,6 +40,20 @@
             }
         &::before {
             @include gradient-before($color-gradient-main)
+        }
+    }
+    &__edit {
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        height: 100%;
+    }
+    &__icon {
+        color: blue;
+        cursor: pointer;
+        &:hover {
+            color: orangered;
         }
     }
 }

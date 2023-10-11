@@ -2,7 +2,6 @@
 @import "../../GlobalStyles/extends";
 
 .layout {
-    
 
     &__container {
         padding-top: 10px;
@@ -16,5 +15,31 @@
             gap: 25px;
             
         }
+    }
+    &__copy {
+        display: none;
+        border-radius: 8px;
+        padding: 4px 8px;
+        background-color: rgb(70, 159, 70);
+        color: #ffffff;
+        position: fixed;
+        bottom: 0;
+        left: -300px;
+        animation: copyAnimation 5s ease-in-out;
+    }
+}
+
+@keyframes copyAnimation {
+    0% {
+        left: -300px;
+    }
+    20% {
+        left: 0;
+    }
+    80% {
+        left: 0;
+    }
+    100% {
+        left: -300px;
     }
 }

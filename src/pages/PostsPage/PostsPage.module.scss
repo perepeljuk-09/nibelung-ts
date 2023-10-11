@@ -1,0 +1,8 @@
+@import "../../GlobalStyles/extends";
+
+.posts {
+    // @extend %box__with__shadow;
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}

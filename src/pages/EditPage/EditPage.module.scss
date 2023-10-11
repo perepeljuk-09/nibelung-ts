@@ -1,0 +1,28 @@
+
+.edit {
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    &__back {
+        cursor: pointer;
+        color: black;
+        &:hover {
+            color: orangered;
+        }
+    }
+
+    &__item {
+        display: flex;
+        width: 40%;
+    }
+
+    &__label,
+    &__input {
+        flex-basis: 50%;
+    }
+    &__btn {
+        width: 20%;
+    }
+}

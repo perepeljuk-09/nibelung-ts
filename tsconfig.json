@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "target": "ES2015",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -13,14 +9,29 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "module": "ESNext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "isolatedModules": false,
+    "noEmit": false,
+    "jsx": "react-jsx",
+    "noImplicitAny": true,
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
+
+// {
+//   "compilerOptions": {
+//     "sourceMap": true,
+//     "outDir": "dist",
+//     "target": "ESNext",
+//     "module": "CommonJS",
+//     "strict": true,
+//     "lib": [
+//             "dom",
+//             "dom.iterable",
+//             "esnext"],
+//     "esModuleInterop": true,
+//     "jsx": "react-jsx"
+//   }
+// }

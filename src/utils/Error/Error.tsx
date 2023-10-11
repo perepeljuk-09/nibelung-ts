@@ -1,16 +1,17 @@
 import React from 'react';
-import "./Error.scss";
+import './Error.scss';
 
 type ErrorType = {
     children: string | undefined;
+    Css?: React.CSSProperties;
 }
 
-const Error: React.FC<ErrorType> = ({children}) => {
+const Error: React.FC<ErrorType> = ({ children, Css }) => {
     return (
-        <p className="error">
+        <p className='error' style={Css}>
             {children}
         </p>
     );
 };
 
-export {Error};
+export { Error };

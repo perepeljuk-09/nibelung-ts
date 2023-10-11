@@ -1,0 +1,89 @@
+
+.answer {
+
+    padding: 12px 16px;
+    border-bottom: 1px solid gray;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__link {
+        text-decoration: none;
+        cursor: pointer;
+    }
+    &__firstName {
+        color: cornflowerblue;
+        font-size: 14px;
+    }
+    &__btns {
+        display: flex;
+        gap: 5px;
+    }
+    &__btn {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        &:disabled {
+            cursor: no-drop;
+        }
+    }
+    &__edit {
+        &:hover {
+            color: brown;
+        }
+    }
+    &__remove {
+        &:hover {
+            color: orangered;
+        }
+    }
+    &__content {
+        margin: 10px 0;
+        font-size: 13px;
+    }
+    &__footer {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    &__addedat {
+        color: gray;
+        font-size: 14px;
+    }
+    &__input {
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin: 10px 0;
+        width: 100%;
+        border: 1px solid cornflowerblue;
+        &:focus {
+            border-color: transparent;
+            outline: 1px solid orangered;
+        }
+    }
+    &__edit_btns {
+        display: flex;
+        gap: 8px;
+    }
+    &__cancel {
+        border: none;
+        background-color: transparent;
+        color: cornflowerblue;
+        cursor: pointer;
+        &:hover {
+            color: orangered;
+        }
+    }
+    &__confirm {
+        border: 1px solid brown;
+        border-radius: 8px;
+        background-color: transparent;
+        color: orangered;
+        padding: 5px 10px;
+        cursor: pointer;
+        &:hover {
+            color: brown;
+        }
+    }
+}

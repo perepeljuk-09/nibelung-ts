@@ -1,15 +1,11 @@
-import { createSlice, PayloadAction, createAsyncThunk} from "@reduxjs/toolkit";
-import { authApi } from "../api/axiosApi";
-
-type responseType = {
-        accessToken: string;
-        refreshToken: string;
-}
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { authApi } from '../api/axiosApi';
+import { isAxiosError } from 'axios';
 
 interface IinitialState {
-    accessToken: string;
-    refreshToken: string;
+    isAuth: boolean;
     isLoading: boolean;
+    error: string;
 }
 
 export const logOutAsync = createAsyncThunk(
@@ -17,48 +13,41 @@ export const logOutAsync = createAsyncThunk(
     async (refreshToken: string, ThunkAPI) => {
         try {
             const res = await authApi.logout(refreshToken);
-            return res.data
+            return res.data;
         } catch (e) {
-            return ThunkAPI.rejectWithValue("Beda")
+            if (isAxiosError(e)) console.log('e >>>', e);
+            return ThunkAPI.rejectWithValue('Beda');
         }
     }
-)
+);
 
 const initialState: IinitialState = {
-    accessToken: '',
-    refreshToken: '',
+    isAuth: false,
     isLoading: false,
-}
+    error: '',
+};
 
 const authReducer = createSlice({
-    name: "auth",
+    name: 'auth',
     initialState,
     reducers: {
-            // setAuth: (state, action: PayloadAction<responseType> | PayloadAction<string>) => {
-            //     if(action.payload.data.accessToken) {
-            //         state.accessToken = action.payload.data.accessToken
-            //         state.refreshToken = action.payload.data.refreshToken
-            //     }
-            // },
-            setTokens: (state, action: PayloadAction<responseType>) => {
-                    state.accessToken = action.payload.accessToken
-                    state.refreshToken = action.payload.refreshToken
-            },
-            setLoadingOn: (state) => {
-                state.isLoading = true
-            },
-            setLoadingOff: (state) => {
-                state.isLoading = false
-            }
+        setAuth: (state, action: PayloadAction<boolean>) => {
+            state.isAuth = action.payload
+        },
+        setLoadingOn: (state) => {
+            state.isLoading = true;
+        },
+        setLoadingOff: (state) => {
+            state.isLoading = false;
+        },
+        setError: (state, action: PayloadAction<string>) => {
+            state.error = action.payload;
+        }
     },
     extraReducers: {
-        [logOutAsync.fulfilled.type]: (state) => {
-            state.accessToken = ''
-            state.refreshToken = ''
-        }
     }
-})
+});
 
-export const { setTokens, setLoadingOn, setLoadingOff } = authReducer.actions;
+export const { setLoadingOn, setLoadingOff, setError, setAuth } = authReducer.actions;
 
 export default authReducer.reducer;

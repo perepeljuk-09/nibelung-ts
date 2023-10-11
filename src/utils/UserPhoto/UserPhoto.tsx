@@ -4,13 +4,13 @@ type UserPhotoPropsType = {
     genderId: number | null | undefined;
 }
 
-export const UserPhoto: React.FC<UserPhotoPropsType> = ({imageSrc, genderId}) => {
+export const UserPhoto: React.FC<UserPhotoPropsType> = ({ imageSrc, genderId }) => {
     return (
         <>
-            {imageSrc 
-                    ? <img src={imageSrc} alt="anything img" /> 
-                    : genderId === 1 ? <p>Ж</p>
-                    : <p>М</p>}
+            {imageSrc
+                ? <img src={imageSrc} alt="anything img" />
+                : genderId === 1 ? <p>М</p>
+                    : <p>Ж</p>}
         </>
-    )
-}
+    );
+};

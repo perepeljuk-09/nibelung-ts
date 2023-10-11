@@ -11,3 +11,8 @@
     background: $gradient;
     z-index: -1;
 }
+
+@mixin SuperMixin($color1, $colorBg) {
+    color: $color1;
+    background-color: $colorBg;
+}

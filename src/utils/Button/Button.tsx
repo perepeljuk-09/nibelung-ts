@@ -1,5 +1,5 @@
 import React, { ComponentProps } from 'react';
-import "./Button.scss"
+import './Button.scss';
 
 
 type ButtonType = {
@@ -9,8 +9,8 @@ type ButtonType = {
 
 const Button: React.FC<ButtonType> = (props) => {
     return (
-        <button {...props} className="custom__btn">{props.children}</button>
+        <button {...props} className='custom__btn'>{props.children}</button>
     );
 };
 
-export {Button};
+export { Button };

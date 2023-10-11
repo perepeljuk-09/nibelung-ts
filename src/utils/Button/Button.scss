@@ -17,5 +17,6 @@
   }
   &:disabled {
     background-color: rgba(12, 33, 193, .5);
+    cursor: no-drop;
   }
 }
