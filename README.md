@@ -2,7 +2,7 @@ This project is frontend for backend project - Nibelung-backend
 
 Backend Nibelung-backend link:
 
-    https://github.com/perepeljuk-09/Nibelung-backend
+    [https://github.com/perepeljuk-09/Nibelung-backend](https://github.com/perepeljuk-09/Nibelung-backend)
 
 1) Run command `yarn install` that install all dependencies
 
