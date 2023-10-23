@@ -8,7 +8,6 @@ export const instanceAxios = axios.create({
 
 export const authApi = {
     login: async (data: IFormLogin) => {
-        // return object type of responseType
         return await instanceAxios.post<responseTokensType>('api/auth/authorize', data);
     },
     async registration(data: IFormRegistrationDto) {

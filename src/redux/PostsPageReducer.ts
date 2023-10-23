@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { filesApi, postsApi } from '../api/axiosApi';
 import { AxiosError, AxiosResponse, isAxiosError } from 'axios';
-import { AddCommentAnswerReduxType, CommentDto, CommentDtoPaginationResult, CommentType, PaginationResult, Post, PostDto, RemoveCommentAnswerReduxType, RemoveCommentReduxType, UpdateCommentAnswerReduxType, onDownloadAnswersReduxType } from '../types/types';
+import type { AddCommentAnswerReduxType, CommentDto, CommentDtoPaginationResult, CommentType, PaginationResult, Post, PostDto, RemoveCommentAnswerReduxType, RemoveCommentReduxType, UpdateCommentAnswerReduxType, onDownloadAnswersReduxType } from '../types/types';
 
 interface IinitialState extends Omit<PaginationResult<Post[]>, 'data'> {
     posts: Post[];

@@ -1,12 +1,12 @@
 import React, { useEffect, useState, FormEvent } from 'react';
 import { CiHeart, CiChat1, CiRead, CiCircleRemove, CiShare1, CiEdit, CiFileOn } from 'react-icons/ci';
-import type { AddCommentAnswerReduxType, CommentDto, CommentDtoPaginationResult, Post, PostDto, RemoveCommentAnswerReduxType, RemoveCommentReduxType, UpdateCommentAnswerReduxType, onDownloadAnswersReduxType } from '../../types/types';
 import { commentsApi, filesApi, postLikesApi, postsApi } from '../../api/axiosApi';
 import { isAxiosError } from 'axios';
 import { useAppDispatch } from '../../hooks/hooks';
 import { Comment } from '../Comment/Comment';
 import { CommentInput } from '../CommentInput/CommentInput';
 import { Link } from 'react-router-dom';
+import type { AddCommentAnswerReduxType, CommentDto, CommentDtoPaginationResult, Post, PostDto, RemoveCommentAnswerReduxType, RemoveCommentReduxType, UpdateCommentAnswerReduxType, onDownloadAnswersReduxType } from '../../types/types';
 import s from './PostCard.module.scss';
 
 type PostCardProps = {
